@@ -185,7 +185,7 @@ def execute_audio(request):
 @login_required
 def execute_video(request):
     record_activity(request.user, 'video')
-    Popen(["python", os.path.join("D:\\finalyearprojectt\\finalyearproject\\final_year_project\\videostegofinal.py")])
+    Popen(["python", os.path.join("D:\\My Final Year Project\\final_year_project\\videostegofinal.py")])
     return render(request, 'mainwork.html')  # Ensure the path to the template is correct
 
 @csrf_protect
