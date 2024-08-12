@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Steganography Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+ body {
+    background-image: url("{% static 'Images/contact.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    color: #ffffff;
+}
+
+.contact {
+    min-height: 100vh;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #333;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-image: url("{% static 'Images/contactus2.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.container h2 {
+    font-size: 36px;
+    margin: 20px 0;
+    color: #00abff;
+    text-align: center;
+}
+
+.contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.contact-form, .contact-info {
+    flex: 1;
+    padding: 30px;
+}
+
+.contact-form {
+    border-right: 1px solid #ffffff;
+}
+
+.contact-form h3, .contact-info h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00abff;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    background: linear-gradient(357deg, #010811, #07556b);
+    color: #ffffff;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #ff6600;
+    box-shadow: 0 0 8px #ff6600;
+}
+
+button {
+    display: inline-block;
+    width: 100%;
+    padding: 15px;
+    background-color: #00abff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #008080;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.contact-info .info-item {
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    background: linear-gradient(357deg, #010811, #07556b);
+}
+
+.contact-info .info-item i {
+    font-size: 24px;
+    color: #00abff;
+    margin-bottom: 10px;
+}
+
+.contact-info .info-item h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #00abff;
+}
+
+.contact-info .info-item p {
+    font-size: 14px;
+    color: #00abff;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+    }
+
+    .contact-form {
+        border-right: none;
+        border-bottom: 1px solid #ffffff;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    header {
+        padding: 40px 20px;
+    }
+}
+
+</style>
+</head>
+<body>
+<section class="contact">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <h3>Send us a message</h3>
+                <form>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fa fa-map-marker"></i>
+                    <h3>Address</h3>
+                    <p>Dumka Engineering College</p>
+                    <p>Dumka, Jharkhand 814101</p>
+                </div>
+                <div class="info-item">
+                    <i class="fa fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>tiwarihimanshu.ht2001@gmail.com</p>
+                    <p>muskansingh12802@gmail.com</p>
+                </div>
+                <div class="info-item">
+                    <i class="fa fa-phone"></i>
+                    <h3>Call Us</h3>
+                    <p>+91 6393176456</p>
+                    <p>+91 9693486779</p>
+                </div>
+                <div class="info-item">
+                    <i class="fa fa-comments"></i>
+                    <h3>Connect</h3>
+                    <p>Follow us on social media</p>
+                    <p>
+                        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a> 
+                        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
+
+{% endblock %}

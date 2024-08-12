@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>digitalstegnaography</title>
+    {% comment %} <link rel="stylesheet" href="styles.css"> {% endcomment %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+ body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  }
+  
+  .navbar {
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a {
+    text-decoration: none;
+    color:  #00abff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.nav-links li {
+    margin-left: 20px;
+    position: relative;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color:  #00abff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.nav-links a i {
+    margin-right: 8px;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #1a1a1a;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #00abff;
+    color: #ffffff;
+}
+
+.dropdown-content a i {
+    margin-right: 8px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="#">Stego-Matrix</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="{% url 'aboutUs' %}"><i class="fas fa-info-circle"></i>About Us</a></li>
+                <li><a href="{% url 'contact' %}"><i class="fas fa-envelope"></i>Contact Us</a></li>
+                <!-- <li><a href="{% url 'signin' %}"><i class="fas fa-sign-in-alt"></i>Login</a></li> -->
+                <li class="dropdown">
+                    <a href="#"><i class="fas fa-sign-in-alt"></i>Login</a>
+                    <div class="dropdown-content">
+                        <a href="{% url 'signin' %}"><i class="fas fa-user"></i>User</a>
+                        <a href="/admin/login/"><i class="fas fa-user-shield"></i>Admin</a>
+                    </div>
+                </li>
+                
+                
+                
+                
+                <li><a href="{% url 'register' %}"><i class="fas fa-user-plus"></i>Sign Up</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+
+      
+      {% for message in messages %}  
+
+      <div class="alert alert-{{message.tags}}" role="alert" style="margin-top: 30px">
+        <h5>{{message}}</h5>
+      </div>
+        
+      {% endfor %}
+        
+
+      
+      {% block content %}
+
+      
+        
+     
+        
+
+</body>
+</html>
+{% endblock content %}

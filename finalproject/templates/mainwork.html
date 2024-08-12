@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <title>Steganography</title>
+    
+     <link rel="stylesheet" type='text/css' href="{% static 'css/mainwork.css' %}"> 
+     {% comment %} C:\Users\virat\Desktop\finalproject\finalproject\static {% endcomment %}
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+   
+ 
+    
+ 
+      @import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
+      :root {
+        --d: 700ms;
+        --e: cubic-bezier(0.19, 1, 0.22, 1);
+        --font-sans: "Rubik", sans-serif;
+        --font-serif: "Cardo", serif;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      html, body {
+        height: 100%;
+      }
+      
+      body {
+        display: grid;
+        place-items: center;
+      }
+      
+      .page-content {
+        display: grid;
+        grid-gap: 1rem;
+        padding: 1rem;
+        max-width: 1024px;
+        margin: 0 auto;
+        font-family: var(--font-sans);
+      }
+      @media (min-width: 600px) {
+        .page-content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 800px) {
+        .page-content {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      
+      .card {
+        position: relative;
+        display: flex;
+        align-items: flex-end;
+        overflow: hidden;
+        padding: 1rem;
+        width: 100%;
+        text-align: center;
+        color: whitesmoke;
+        background-color: whitesmoke;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1), 0 4px 4px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.1), 0 16px 16px rgba(0, 0, 0, 0.1);
+      }
+      @media (min-width: 600px) {
+        .card {
+          height: 400px;
+          width:300px;
+        }
+      }
+      .card:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background-size: cover;
+        background-position: 0 0;
+        transition: transform calc(var(--d) * 1.5) var(--e);
+        pointer-events: none;
+      }
+      .card:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200%;
+        pointer-events: none;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.009) 11.7%, rgba(0, 0, 0, 0.034) 22.1%, rgba(0, 0, 0, 0.072) 31.2%, rgba(0, 0, 0, 0.123) 39.4%, rgba(0, 0, 0, 0.182) 46.6%, rgba(0, 0, 0, 0.249) 53.1%, rgba(0, 0, 0, 0.32) 58.9%, rgba(0, 0, 0, 0.394) 64.3%, rgba(0, 0, 0, 0.468) 69.3%, rgba(0, 0, 0, 0.54) 74.1%, rgba(0, 0, 0, 0.607) 78.8%, rgba(0, 0, 0, 0.668) 83.6%, rgba(0, 0, 0, 0.721) 88.7%, rgba(0, 0, 0, 0.762) 94.1%, rgba(0, 0, 0, 0.79) 100%);
+        transform: translateY(-50%);
+        transition: transform calc(var(--d) * 2) var(--e);
+      }
+      .card:nth-child(1):before {
+             {% comment %} url("{% static 'Images/homeimg.webp'%}"); {% endcomment %}
+            
+              object-fit: contain;
+            
+            
+            
+        background-image: url(https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+      }
+      .card:nth-child(2):before {
+        background-image: url(https://images.unsplash.com/photo-1533903345306-15d1c30952de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+      }
+      .card:nth-child(3):before {
+        background-image: url(https://images.unsplash.com/photo-1545243424-0ce743321e11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+      }
+      .card:nth-child(4):before {
+        background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
+      }
+      
+      .content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 1rem;
+        transition: transform var(--d) var(--e);
+        z-index: 1;
+      }
+      .content > * + * {
+        margin-top: 1rem;
+      }
+      
+      .title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        line-height: 1.2;
+      }
+      
+      .copy {
+        font-family: var(--font-serif);
+        font-size: 1.125rem;
+        font-style: italic;
+        line-height: 1.35;
+      }
+      
+      .btn {
+        cursor: pointer;
+        margin-top: 1.5rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.65rem;
+        font-weight: bold;
+        letter-spacing: 0.025rem;
+        text-transform: uppercase;
+        color: white;
+        background-color: black;
+        border: none;
+      }
+      .btn:hover {
+        background-color: #0d0d0d;
+      }
+      .btn:focus {
+        outline: 1px dashed yellow;
+        outline-offset: 3px;
+      }
+      
+      @media (hover: hover) and (min-width: 600px) {
+        .card:after {
+          transform: translateY(0);
+        }
+      
+        .content {
+          transform: translateY(calc(100% - 4.5rem));
+        }
+        .content > *:not(.title) {
+          opacity: 0;
+          transform: translateY(1rem);
+          transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+        }
+      
+        .card:hover,
+      .card:focus-within {
+          align-items: center;
+        }
+        .card:hover:before,
+      .card:focus-within:before {
+          transform: translateY(-4%);
+        }
+        .card:hover:after,
+      .card:focus-within:after {
+          transform: translateY(-50%);
+        }
+        .card:hover .content,
+      .card:focus-within .content {
+          transform: translateY(0);
+        }
+        .card:hover .content > *:not(.title),
+      .card:focus-within .content > *:not(.title) {
+          opacity: 1;
+          transform: translateY(0);
+          transition-delay: calc(var(--d) / 8);
+        }
+      
+        .card:focus-within:before, .card:focus-within:after,
+      .card:focus-within .content,
+      .card:focus-within .content > *:not(.title) {
+          transition-duration: 0s;
+        }
+      }
+  
+ 
+      body {
+            
+        background-image: url("{% static 'Images/mainpage.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center  center;
+        height: 100vh;
+}
+
+  
+
+  
+    .navbar {
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    }
+    
+    .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+    
+    .logo a {
+    text-decoration: none;
+    color: #00abff;
+    font-size: 24px;
+    font-weight: bold;
+    
+    }
+    
+    .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    }
+    
+    .nav-links li {
+    margin-left: 20px;
+    }
+    
+    .nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+    }
+    
+    .nav-links a:hover {
+    background-color: #00abff;
+    color: #ffffff;
+    border-radius: 5px;
+    }
+
+    
+    
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-container">
+          <div class="logo">
+              <a href="#">Stego-Matrix</a>
+          </div>
+          <ul class="nav-links">
+              <li><a href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+              <li><a href="{% url 'aboutUs' %}"><i class="fas fa-info-circle"></i>About Us</a></li>
+              <li><a href="{% url 'contact' %}"><i class="fas fa-envelope"></i>Contact Us</a></li>
+              <li><a href="{% url 'signin' %}"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+              <li><a href="{% url 'register' %}"><i class="fas fa-user-plus"></i>Sign Up</a></li>
+              <li><a href="{% url 'dashboard' %}"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+          </ul>
+      </div>
+  </nav>
+
+
+  <main class="page-content">
+    <div class="card">
+      <div class="content">
+        <h2 class="title">Image Steganography</h2>
+        <form action="{% url 'execute_image' %}" method="post">
+          {% csrf_token %} 
+        <p class="copy">Concealing data within images to securely transmit hidden information.</p>
+        <button class="btn">Image-stego</button>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <h2 class="title">Audio Steganography</h2>
+        <form action="{% url 'execute_audio' %}" method="post">
+          {% csrf_token %} 
+        <p class="copy">Embedding secret data within audio files for covert communication.</p>
+        <button class="btn">Audio-stego</button>
+      </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <h2 class="title">Video Steganography</h2>
+        <form action="{% url 'execute_video' %}" method="post">
+          {% csrf_token %} 
+        <p class="copy">Hiding data within video files to transmit concealed information securely.</p>
+        <button class="btn">Video-stego</button>
+      </form>
+      </div>
+    </div>
+    
+  </main>
+
+
+
+
+    <!-- <div class="container">
+      <div class="box">
+        <img src="{% static 'Images/imgicon.png' %}" alt="img" >
+        <p align="center">Welcome in the world of image steganography</p>
+        <img src="{% static 'Images/imgstego.jpg' %}" alt="Image">
+       
+        <form action="{% url 'execute_image' %}" method="post">
+          {% csrf_token %} 
+        <button type="submit">Click Here</button>
+        </form>
+      </div>
+      <div class="box">
+        <img src="{% static 'Images/audioicon.png' %}" alt="ado" >
+        <p align="center">Welcome in the world of audio steganography</p>
+        <img src="{% static 'Images/audiostego.jpg' %}" alt="Audio" >
+        
+        <form action="{% url 'execute_audio' %}" method="post">
+          {% csrf_token %} 
+        <button type="submit">Click Here</button>
+        </form>
+      </div>
+      <div class="box">
+        <img src="{% static 'Images/videoicon.png' %}" alt="vdo" >
+        <p align="center">Welcome in the world of video steganography</p>
+        <img src="{% static 'Images/videostego.png' %}" alt="Video" >
+        
+        <form action="{% url 'execute_video' %}" method="post">
+          {% csrf_token %} 
+        <button type="submit">Click Here</button>
+        </form>
+      </div>
+    </div> -->
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+     
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  
+  </body>
+  
+</html>
+

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Steganography Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(357deg, #010811, #07556b);
+    color: #ffffff;
+}
+
+.navbar {
+    background-color: #1a1a1a;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo a {
+    text-decoration: none;
+    color:  #00abff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color:  #00abff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.nav-links a i {
+    margin-right: 8px;
+}
+
+@media (max-width: 768px) {
+    .navbar-container {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    header {
+        padding: 40px 20px;
+    }
+}
+
+
+
+.dashboard-container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #444;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    background: linear-gradient(357deg, #010811, #07556b);
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar ul a:hover {
+    background-color:  #00abff;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.sidebar ul a i {
+    margin-right: 10px;
+}
+
+.main-content {
+    margin-left: 250px;
+
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.main-content h1 {
+    color: #ff6600;
+}
+
+.tasks-section {
+    background-color: #444;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.tasks-section h2 {
+    color:  #00abff;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #555;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 16px;
+}
+
+.task-action {
+    background-color:  #00abff;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.task-action:hover {
+    background-color:  #004080;
+}
+
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="#">Stego-Matrix</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                {% comment %} <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="#"><i class="fas fa-sign-in-alt"></i></a></li>
+                <li><a href="#"><i class="fas fa-user-plus"></i></a></li> {% endcomment %}
+                <li><a href="{% url 'mainwork' %}"><i class="fas fa-tachometer-alt"></i>Return to work </a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="{% url 'profile' %}"><i class="fas fa-user"></i> Profile</a></li>
+                <!-- <li><a href="#"><i class="fas fa-file"></i> My Tasks</a></li> -->
+                <!-- <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li> -->
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}" alert><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                {% endif %}
+            </ul>
+        </aside>
+        <main class="main-content">
+            <h2>Welcome to Your Dashboard</h2>
+            
+            
+            <section class="tasks-section">
+                <h2>Your Steganography Tasks</h2>
+              
+                <ul class="task-list">
+                    {% for activity in activities %}
+                    <li>
+                        <span class="task-title">{{ activity.activity_type|capfirst }} Steganography - {{ activity.timestamp|date:"Y-m-d H:i:s" }}</span>
+                        {% comment %} <button class="task-action">View</button> {% endcomment %}
+                    </li>
+                    {% empty %}
+                    <li>No activities found.</li>
+                    {% endfor %}
+                     {% comment %} <li>
+                        <span class="task-title">Audio Steganography - 2024-05-19</span>
+                        <button class="task-action">View</button>
+                    </li>
+                    <li>
+                        <span class="task-title">Video Steganography - 2024-05-18</span>
+                        <button class="task-action">View</button>
+                    </li>  {% endcomment %}
+                    
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

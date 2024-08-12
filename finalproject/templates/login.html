@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(357deg, #010811, #07556b);
+            background-image: url("{% static 'Images/loginbg.jpg'%}");
+            background-size: 80%;
+            background-repeat: no-repeat;
+            background-position: center left left;
+            height: 100vh;
+            
+            
+        }
+        form {
+            width: 400px;
+            height: auto;
+            padding: 20px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 15px 15px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-sizing: border-box;
+            background: linear-gradient(357deg, #010811, #07556b);
+            color: white;
+            box-align:right
+        }
+        form p {
+            text-align: center;
+            display: flex;
+        }
+        form h3 {
+            text-align: center;
+            color: #00abff;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h3><strong>LOGIN</strong></h3>
+        <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-control" id="email" name="username" placeholder="Enter email address" aria-label="Email Address" required>
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" id="password" name="password" placeholder="Enter password" aria-label="Password" required>
+        </div>
+
+        <button class="btn btn-primary" style="width: 100%;">Login to your account</button>
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+    </form>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+    
+</body>
+</html>
+
+
+{% endblock content %}

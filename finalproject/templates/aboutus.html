@@ -1,0 +1,260 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Steganography Solutions</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'Images/aboutus3.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center  center;
+            height: 50vh;
+            color: #ffffff;
+        }
+
+        .navbar {
+            background-color: #1a1a1a;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            text-decoration: none;
+            color:  #00abff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color:  #00abff;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+
+        .nav-links a i {
+            margin-right: 8px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: url("{% static 'Images/aboutsus3.avif' %}") no-repeat center center/cover;
+            color: #ffffff;
+            position: relative;
+            height:250px;
+        }
+
+        header::before {
+            content: "";
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #ff6600;
+            z-index: 1;
+            position: relative;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .about-section {
+            margin-bottom: 40px;
+        }
+
+        .about-section h2 {
+            color: #00abff;
+            margin-bottom: 10px;
+            text-align:center;
+        }
+
+        .feature {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 16px rgba(0, 0, 0, 0.5);
+        }
+        .card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 20px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature h3 {
+            margin-top: 0;
+            color: #00abff;
+        }
+
+        .feature p {
+            margin: 10px 0 0;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1></h1>
+    </header>
+    <main class="about-content">
+        <section class="about-section">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white  border-radius 40px  mb-3">
+                        <img src="{% static 'Images/ourmission.jpg' %}" class="card-img-top" alt="Our Mission">
+                        <div class="card-header">
+                            <h2 class="card-title">Our Mission</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">To provide advanced steganography solutions for secure data transmission.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white mb-3">
+                        <img src="{% static 'Images/ourvalue.webp' %}" class="card-img-top" alt="Our Values">
+                        <div class="card-header">
+                            <h2 class="card-title">Our Values</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Security, innovation, and excellence in all our services 
+                                <br>
+                                <br>
+                                
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark text-white mb-3">
+                        <img src="{% static 'Images/ourvision.jpg' %}" class="card-img-top" alt="Our Vision">
+                        <div class="card-header">
+                            <h2 class="card-title">Our Vision</h2>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">To be the leading provider of innovative steganography tools. 
+                                <br>
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="about-section">
+            <h2>Our Features</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature bg-dark">
+                        <h3>Image Steganography</h3>
+                        <p>Hide your messages within images with our advanced algorithms. Our image steganography tools allow you to securely embed data into image files without compromising their quality.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature bg-dark">
+                        <h3>Audio Steganography</h3>
+                        <p>Securely embed data into audio files with our state-of-the-art audio steganography techniques. Ensure your data remains hidden and secure within audio files.
+                            <br>
+                            <br>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature bg-dark">
+                        <h3>Video Steganography</h3>
+                        <p>Implement data hiding techniques within video files for enhanced security. Our video steganography solutions provide a secure way to embed data into video files.
+
+                            <br> 
+                            <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include Bootstrap JS (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock content %}

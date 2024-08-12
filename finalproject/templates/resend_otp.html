@@ -1,0 +1,77 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resend OTP</title>
+     <!-- Bootstrap CSS  -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(357deg, #010811, #07556b);
+            background-image: url("{% static 'Images/signup5.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center left;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            width: 400px;
+            padding: 30px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-sizing: border-box;
+        }
+        form h3 {
+            text-align: center;
+            color: #010811;
+            margin-bottom: 20px;
+        }
+        .form-label {
+            color: #010811;
+            font-weight: bold;
+        }
+        .form-control {
+            border: 1px solid #010811;
+            border-radius: 5px;
+        }
+        button {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            background-color: #010811;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #07556b;
+        }
+    </style>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h3><strong>Resend OTP</strong></h3>
+        <div class="form-group mb-3">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-control" name="otp_email" placeholder="Enter email address" required>
+        </div>
+        <button class="btn btn-primary">Send OTP</button>
+    </form>
+</body>
+</html>
+
+
+     
